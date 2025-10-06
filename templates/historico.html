@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Histórico de Vistorias</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 30px;
+    }
+    .container {
+        max-width: 1000px;
+        margin: 30px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        padding: 22px;
+    }
+    h2 {
+        color: #E60000;
+        text-align: center;
+        margin-top: 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+    }
+    th, td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #e9e9e9;
+        text-align: left;
+        font-size: 14px;
+    }
+    th {
+        background-color: #E60000;
+        color: white;
+        font-weight: 700;
+    }
+    tr:hover { background-color: #fafafa; }
+    .empty {
+        text-align: center;
+        padding: 18px;
+        color: #666;
+    }
+    .back {
+        text-align: center;
+        margin-top: 18px;
+    }
+    .back a {
+        color: #E60000;
+        font-weight: 700;
+        text-decoration: none;
+    }
+    .back a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>📋 Histórico de Vistorias Enviadas</h2>
+
+    {% if vistorias and vistorias|length > 0 %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Condomínio</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Técnico</th>
+                <th>Data de Envio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in vistorias %}
+            <tr>
+                <td>{{ v[0] }}</td>
+                <td>{{ v[1] }}</td>
+                <td>{{ v[2] }}</td>
+                <td>{{ v[3] }}</td>
+                <td>{{ v[4] }}</td>
+                <td>{{ v[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="empty">Nenhuma vistoria enviada ainda.</div>
+    {% endif %}
+
+    <div class="back">
+        <a href="/vistoria">⬅ Voltar para o formulário de Vistoria</a>
+    </div>
+</div>
+</body>
+</html>
